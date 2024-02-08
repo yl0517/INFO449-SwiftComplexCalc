@@ -23,10 +23,11 @@ print("Welcome back to the UW Calculator")
 //: 
 //: > PRO TIP: It is strongly suggested that as you get each test working, commit your code to GitHub. Each time you get a little bit working, commit to GitHub. It is far, far easier for I and the TA to figure out where something went wrong and get you partial credit if we have a commit history to examine, as opposed to a "commit everything when I'm done" style that college students so often prefer. It's easier on your boss, too, when you get to a Real Job, if you have a rich commit history; on top of that, if you have something working, commit it, then make a change and the whole world seems to blow up, you can always revert back to that previous place of goodness and start over. Can't do that unless you commit regularly, though.
 //:
-//: Remember, don't change any of the pre-existing tests!
+//: Remember, don't change any of the pre-existing tests! *HOWEVER*, you are allowed to comment out some or all of the tests on a temporary basis in order to verify that the code is working--just remember to uncomment all of them before declaring the code finished.
+//:
+//: IMPORTANT: If any tests are commented out, you will be graded a zero (0)! You should never be in the habit of eliminating tests to make the code pass.
 //:
 class Calculator {
-    
 }
 
 //: Don't change the name of this object (`calc`); it's used in all the tests.
@@ -36,6 +37,10 @@ let calc = Calculator()
 //: Add in your own tests here; they should not test something that is already covered by an existing test, but rest assured that I have not tested every boundary condition. Feel free to explore a variety of ideas, and do not be surprised if you come up with a possibility that isn't covered in my requirements! (I have been known to give extra credit if you find one!)
 //:
 //: We will give 0-2 pts depending on how pervasive and useful your new tests are.
+//:
+//: Suggestions for new tests: What about negative numbers? What about avg and an empty array? What about add or multiply with an empty array?
+//:
+//: Keep in mind that writing new tests may reveal ambiguity in the specification above--if that's the case, document the ambiguity, declare what you think *should* happen, and write the test to test for it.
 
 // ===== Your tests go here
 
