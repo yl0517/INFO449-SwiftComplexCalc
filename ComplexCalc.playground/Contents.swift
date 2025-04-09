@@ -28,7 +28,75 @@ print("Welcome back to the UW Calculator")
 //: IMPORTANT: If any tests are commented out, you will be graded a zero (0)! You should never be in the habit of eliminating tests to make the code pass.
 //:
 class Calculator {
+    // Basic
+    func add(lhs: Int, rhs: Int) -> Int {
+        return lhs + rhs
+    }
+    
+    func subtract(lhs: Int, rhs: Int) -> Int {
+        return lhs - rhs
+    }
+    
+    func multiply(lhs: Int, rhs: Int) -> Int {
+        return lhs * rhs
+    }
+    
+    func divide(lhs: Int, rhs: Int) -> Int {
+        return lhs / rhs
+    }
+    
+    // Higher Order
+    func mathOp(lhs: Int, rhs: Int, op: (Int, Int) -> Int) -> Int {
+        return op(lhs, rhs)
+    }
+    
+    // Array as param
+    func add(_ numbers: [Int]) -> Int {
+        return numbers.reduce(0, +)
+    }
+    
+    func multiply(_ numbers: [Int]) -> Int {
+        return numbers.reduce(1, *)
+    }
+    
+    func count(_ numbers: [Int]) -> Int {
+        return numbers.count
+    }
+    
+    func avg(_ numbers: [Int]) -> Int {
+        guard !numbers.isEmpty else { return 0 }
+        return add(numbers) / count(numbers)
+    }
+    
+    // Higher Order on arrays
+    func mathOp(args: [Int], beg: Int, op: (Int, Int) -> Int) -> Int {
+        return args.reduce(beg, op)
+    }
+    
+    // Tuples
+    func add(lhs: (Int, Int), rhs: (Int, Int)) -> (Int, Int) {
+        return (lhs.0 + rhs.0, lhs.1 + rhs.1)
+    }
+    
+    
+    func subtract(lhs: (Int, Int), rhs: (Int, Int)) -> (Int, Int) {
+        return (lhs.0 - rhs.0, lhs.1 - rhs.1)
+    }
+    
+    // KV Pairs
+    func add(lhs: [String: Int], rhs: [String: Int]) -> [String: Int] {
+        let xSum = (lhs["x"] ?? 0) + (rhs["x"] ?? 0)
+        let ySum = (lhs["y"] ?? 0) + (rhs["y"] ?? 0)
+        return ["x": xSum, "y": ySum]
+    }
+    
+    func subtract(lhs: [String: Int], rhs: [String: Int]) -> [String: Int] {
+        let xDiff = (lhs["x"] ?? 0) - (rhs["x"] ?? 0)
+        let yDiff = (lhs["y"] ?? 0) - (rhs["y"] ?? 0)
+        return ["x": xDiff, "y": yDiff]
+    }
 }
+
 
 //: Don't change the name of this object (`calc`); it's used in all the tests.
 let calc = Calculator()
@@ -43,7 +111,9 @@ let calc = Calculator()
 //: Keep in mind that writing new tests may reveal ambiguity in the specification above--if that's the case, document the ambiguity, declare what you think *should* happen, and write the test to test for it.
 
 // ===== Your tests go here
-
+calc.multiply([]) == 1
+calc.add([-1, -2]) == -3
+calc.avg([-1, 1]) == 0
 //: ---
 //: ## Test code block
 //: Do not modify the code in this section
@@ -52,7 +122,7 @@ calc.subtract(lhs: 2, rhs: 2) == 0
 calc.multiply(lhs: 2, rhs: 2) == 4
 calc.divide(lhs: 2, rhs: 2) == 1
 
-calc.mathOp(lhs: 5, rhs: 5, op: { (lhs: Int, rhs: Int) -> Int in (lhs + rjs) + (lhs * rhs) }) == 35
+calc.mathOp(lhs: 5, rhs: 5, op: { (lhs: Int, rhs: Int) -> Int in (lhs + rhs) + (lhs * rhs) }) == 35
     // This style is one way of writing an anonymous function
 calc.mathOp(lhs: 10, rhs: -5, op: { ($0 + $1) + ($0 - $1) }) == 20
     // This is the second, more terse, style; either works
